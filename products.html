@@ -1,46 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Products</title>
+<title>Products - Nightfall</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-<h2>Nightfall Store</h2>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="reviews.html">Reviews</a>
-<a href="staff.html">Staff</a>
-</nav>
-</header>
-
-<div class="container">
-
 <h1>Products</h1>
 
-<div class="product-grid">
+<div class="products">
 
-<div class="product-card">
-<img src="https://via.placeholder.com/300">
-<h3>License System</h3>
-<p>Advanced Roblox licensing system.</p>
-<button onclick="window.open('https://www.roblox.com')">Buy</button>
-</div>
-
-<div class="product-card">
-<img src="https://via.placeholder.com/300">
-<h3>Retail Bot</h3>
-<p>Discord retail automation bot.</p>
-<button onclick="window.open('https://www.roblox.com')">Buy</button>
+<div class="product">
+<img src="https://via.placeholder.com/200">
+<h2>Nightfall License</h2>
+<p>Best retail bot license</p>
+<button onclick="viewProduct('license1')">View</button>
 </div>
 
 </div>
 
-</div>
+<script>
+function viewProduct(id){
+window.location.href = "product.html?id=" + id;
+}
+</script>
 
 </body>
 </html>
