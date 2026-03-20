@@ -8,7 +8,7 @@
 <body>
 
 <header>
-<h2>Nightfall Store</h2>
+<h1>🌙 Nightfall Store</h1>
 
 <nav>
 <a href="index.html">Home</a>
@@ -16,18 +16,69 @@
 <a href="reviews.html">Reviews</a>
 <a href="staff.html">Staff</a>
 </nav>
+
+<button onclick="login()" class="login-btn">Login</button>
 </header>
 
-<div class="container">
+<section class="hero">
+<h2>Premium Retail Solutions</h2>
+<p>Fast. Secure. Reliable.</p>
+<a href="products.html">
+<button>Browse Products</button>
+</a>
+</section>
 
-<h1>Welcome to Nightfall</h1>
-
-<p>
-High quality Roblox systems and scripts.
-Secure purchases and verified products.
-</p>
-
+<section class="features">
+<div>
+<h3>⚡ Instant Delivery</h3>
+<p>Get your products instantly after purchase.</p>
 </div>
+
+<div>
+<h3>🔒 Secure System</h3>
+<p>All purchases verified via Roblox & Discord.</p>
+</div>
+
+<div>
+<h3>🛠 24/7 Support</h3>
+<p>Staff always ready to help you.</p>
+</div>
+</section>
+
+<section class="status" id="status">
+Checking system status...
+</section>
+
+<footer>
+<p>© Nightfall Store</p>
+</footer>
+
+<script>
+function login(){
+alert("Login system coming soon (Discord / Roblox)");
+}
+
+// 🔥 BOT STATUS CHECK
+async function checkStatus(){
+try{
+const res = await fetch("http://YOUR_SERVER_IP:3000/api/status");
+const data = await res.json();
+
+if(data.online){
+document.getElementById("status").innerHTML =
+"<span style='color:lime;'>✔ Bot Online</span>";
+}else{
+document.getElementById("status").innerHTML =
+"<span style='color:red;'>❌ Bot Offline</span>";
+}
+}catch{
+document.getElementById("status").innerHTML =
+"<span style='color:yellow;'>⚠ Cannot reach bot</span>";
+}
+}
+
+checkStatus();
+</script>
 
 </body>
 </html>

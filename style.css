@@ -1,28 +1,61 @@
 body {
+  margin: 0;
   font-family: Arial;
   background: #0f172a;
   color: white;
-  text-align: center;
 }
 
-.products {
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #020617;
+}
+
+nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: #3b82f6;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px;
+}
+
+.hero button {
+  background: #22c55e;
+  padding: 15px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.features {
   display: flex;
   justify-content: center;
   gap: 20px;
+  padding: 40px;
 }
 
-.product {
+.features div {
   background: #1e293b;
   padding: 20px;
   border-radius: 10px;
   width: 200px;
 }
 
-button {
-  background: #22c55e;
-  border: none;
-  padding: 10px;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+.status {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
 }

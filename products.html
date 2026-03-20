@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Products - Nightfall</title>
+<title>Products</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,20 +9,34 @@
 
 <h1>Products</h1>
 
-<div class="products">
+<div class="products" id="products"></div>
 
-<div class="product">
-<img src="https://via.placeholder.com/200">
-<h2>Nightfall License</h2>
-<p>Best retail bot license</p>
-<button onclick="viewProduct('license1')">View</button>
-</div>
-
-</div>
+<script src="products.js"></script>
 
 <script>
-function viewProduct(id){
-window.location.href = "product.html?id=" + id;
+if (typeof PRODUCTS === "undefined") {
+  document.body.innerHTML = "<h1>ERROR: products.js not loaded</h1>";
+}
+
+const container = document.getElementById("products");
+
+PRODUCTS.forEach(p => {
+  const div = document.createElement("div");
+
+  div.className = "product";
+
+  div.innerHTML = `
+    <img src="${p.image}">
+    <h2>${p.name}</h2>
+    <p>${p.desc}</p>
+    <button onclick="view('${p.id}')">View</button>
+  `;
+
+  container.appendChild(div);
+});
+
+function view(id){
+  window.location.href = "product.html?id=" + id;
 }
 </script>
 

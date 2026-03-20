@@ -1,40 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Products</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<h1>Products</h1>
-
-<div class="products" id="products"></div>
-
 <script src="products.js"></script>
 
 <script>
-const container = document.getElementById("products");
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
-PRODUCTS.forEach(p => {
-  const div = document.createElement("div");
+const product = PRODUCTS.find(p => p.id === id);
 
-  div.className = "product";
+const userId = localStorage.getItem("discordId"); // temporary
 
-  div.innerHTML = `
-    <img src="${p.image}">
-    <h2>${p.name}</h2>
-    <p>${p.desc}</p>
-    <button onclick="view('${p.id}')">View</button>
-  `;
+async function checkOwnership() {
+  try {
+    const res = await fetch(`http://YOUR_SERVER_IP:3000/api/owns?user=${userId}&product=${id}`);
+    const data = await res.json();
 
-  container.appendChild(div);
-});
-
-function view(id){
-  window.location.href = "product.html?id=" + id;
+    if (data.owns) {
+      document.getElementById("product").innerHTML += `
+        <h2 style="color:lime;">✔ Owned</h2>
+      `;
+    }
+  } catch {
+    document.getElementById("product").innerHTML += `
+      <h2 style="color:yellow;">⚠ Bot offline</h2>
+    `;
+  }
 }
-</script>
 
-</body>
-</html>
+document.getElementById("product").innerHTML = `
+<h1>${product.name}</h1>
+<img src="${product.image}">
+<p>${product.desc}</p>
+<button onclick="buy()">Buy</button>
+`;
+
+function buy(){
+  window.location.href = product.gamepass;
+}
+
+checkOwnership();
+</script>
