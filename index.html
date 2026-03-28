@@ -55,7 +55,7 @@ Checking system status...
 
 <script>
 function login(){
-alert("Login system coming soon (Discord / Roblox)");
+  window.location.href = "/api/login";
 }
 
 // 🔥 BOT STATUS CHECK
@@ -78,6 +78,20 @@ document.getElementById("status").innerHTML =
 }
 
 checkStatus();
+
+function getCookie(name) {
+  return document.cookie
+    .split("; ")
+    .find(row => row.startsWith(name + "="))
+    ?.split("=")[1];
+}
+
+const user = getCookie("discordName");
+
+if (user) {
+  document.querySelector(".login-btn").innerText = user;
+}
+
 </script>
 
 </body>
